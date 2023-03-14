@@ -13,12 +13,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm format && git add -A ."
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": "prettier --write"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
