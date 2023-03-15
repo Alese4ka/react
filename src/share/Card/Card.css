@@ -1,0 +1,42 @@
+.cards {
+  margin: 0 auto;
+  width: 75rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card {
+  background: #F5F5F5;
+  border: 0.5rem solid #D45869;
+  width: 12rem;
+  margin-bottom: 4rem;
+  height: 15rem;
+}
+
+.card-title {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 1rem;
+}
+
+.card-author {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #8B8787;
+}
+
+.card-info {
+  position: absolute;
+  margin-top: 0.5rem;
+  margin-left: 1.3rem;
+}
+
+.card-info-price {
+ text-align: center;
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AboutUs from './pages/AboutUs';
-import Main from './pages/Main';
 import NotFound from './pages/NotFound';
-import Header from './share/Header';
+import Main from './pages/Main/Main';
+import Header from './pages/Header/Header';
 
 function App() {
   return (
