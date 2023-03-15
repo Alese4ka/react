@@ -10,8 +10,8 @@
 }
 
 .card {
-  background: #F5F5F5;
-  border: 0.5rem solid #D45869;
+  background: #f5f5f5;
+  border: 0.5rem solid #d45869;
   width: 12rem;
   margin-bottom: 4rem;
   height: 15rem;
@@ -28,7 +28,7 @@
 .card-author {
   text-align: center;
   font-size: 0.75rem;
-  color: #8B8787;
+  color: #8b8787;
 }
 
 .card-info {
@@ -38,5 +38,5 @@
 }
 
 .card-info-price {
- text-align: center;
+  text-align: center;
 }
