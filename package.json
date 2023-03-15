@@ -16,7 +16,10 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["eslint --fix .", "prettier --write ."]
+    "**/*.{ts,tsx}": [
+      "eslint --fix .",
+      "prettier --write ."
+    ]
   },
   "dependencies": {
     "react": "^18.2.0",
