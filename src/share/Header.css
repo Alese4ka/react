@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: #D45869;
+}
+
+h2 {
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 4rem;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+}

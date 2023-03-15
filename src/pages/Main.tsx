@@ -1,13 +1,17 @@
 import React, { ReactElement } from 'react';
-import Header from '../share/Header';
+import './Main.css';
 
 export default class Main extends React.Component {
   render(): ReactElement {
     return (
-      <>
-        <Header />
-        <h1>Hello, world</h1>
-      </>
+      <form className="form">
+        <input
+          className="form-input"
+          type="text"
+          name="search"
+          placeholder="What are you looking for?"
+        />
+      </form>
     );
   }
 }
