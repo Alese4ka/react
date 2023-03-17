@@ -1,6 +1,7 @@
 import { Props, State } from 'entities/main.interface';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Card from './Card/Card';
+import SearchField from './SearchField/SearchField';
 import './Main.css';
 
 export default class MainPage extends React.Component<Props, State> {
@@ -28,39 +29,20 @@ export default class MainPage extends React.Component<Props, State> {
     }
   }
 
-  render() {
+  render(): ReactElement {
     const searchValueLC = localStorage.getItem('search');
     if (searchValueLC !== null && searchValueLC !== undefined) {
       const searchValue = JSON.parse(searchValueLC);
       return (
         <>
-          <form className="form">
-            <input
-              className="form-input"
-              id="search"
-              type="search"
-              name="search"
-              defaultValue={searchValue || ''}
-              onInput={this.handleChange}
-            />
-          </form>
+          <SearchField defaultValue={searchValue || ''} handleChange={this.handleChange} />
           <Card />
         </>
       );
     }
     return (
       <>
-        <form className="form">
-          <input
-            className="form-input"
-            id="search"
-            type="search"
-            name="search"
-            placeholder="Type here..."
-            defaultValue=""
-            onInput={this.handleChange}
-          />
-        </form>
+        <SearchField placeholder="Type here..." defaultValue="" handleChange={this.handleChange} />
         <Card />
       </>
     );
