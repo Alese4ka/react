@@ -1,6 +1,6 @@
 import { Props, State } from 'entities/main.interface';
 import React from 'react';
-import Card from '../../share/Card/Card';
+import Card from './Card/Card';
 import './Main.css';
 
 export default class MainPage extends React.Component<Props, State> {
@@ -57,7 +57,7 @@ export default class MainPage extends React.Component<Props, State> {
             type="search"
             name="search"
             placeholder="Type here..."
-            defaultValue="Initial value"
+            defaultValue=""
             onInput={this.handleChange}
           />
         </form>

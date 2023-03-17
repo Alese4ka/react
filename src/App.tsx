@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Main from './pages/Main/Main';
 import AboutUs from './pages/AboutUs';
 import NotFound from './pages/NotFound';
-import Main from './pages/Main/Main';
 import Header from './pages/Header/Header';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main props="" />} />
         <Route path="about" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint --fix .",
+    "lint": "eslint --fix ./src",
     "test": "vitest"
   },
   "husky": {
@@ -17,8 +17,8 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "eslint --fix .",
-      "prettier --write ."
+      "eslint --fix ./src",
+      "prettier --write ./src"
     ]
   },
   "dependencies": {
@@ -34,6 +34,8 @@
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.29.3",
+    "c8": "^7.13.0",
     "eslint": "^8.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

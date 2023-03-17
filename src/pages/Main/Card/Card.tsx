@@ -76,6 +76,7 @@ export default class Card extends React.Component {
         price: '$ 50.99',
       },
     ];
+
     const list = books.map((element) => {
       return (
         <div className="card" key={element.id}>
@@ -86,7 +87,7 @@ export default class Card extends React.Component {
           <div className="card-author">{element.author}</div>
           <div className="card-info">
             <div>
-              <img src={element.img} alt={element.title} />
+              <img className="card-info-img" src={element.img} alt={element.title} />
             </div>
             <div className="card-info-price">{element.price}</div>
           </div>
