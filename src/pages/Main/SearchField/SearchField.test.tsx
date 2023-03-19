@@ -2,11 +2,11 @@ import { describe } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 
 import React from 'react';
-import Main from './Main';
+import SearchField from './SearchField';
 
 describe('Main', () => {
   test('The input field and its props', () => {
-    render(<Main props="" />);
+    render(<SearchField />);
     const form = document.querySelector('form') as HTMLFormElement | null;
     const input = document.querySelector('input') as HTMLInputElement | null;
 

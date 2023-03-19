@@ -7,8 +7,8 @@ export interface State {
 
 export interface PropsSearchField {
   placeholder?: string;
-  defaultValue: string;
-  handleChange: FormEventHandler<HTMLInputElement>;
+  defaultValue?: string;
+  handleChange?: FormEventHandler<HTMLInputElement>;
 }
 
 export interface PropsHeader {

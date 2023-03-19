@@ -9,8 +9,8 @@ export default class AppRouter extends React.Component {
     return (
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/about" data-testid="about-link" element={<AboutUsRouter />} />
-        <Route path="/*" data-testid="not-found-link" element={<NotFound />} />
+        <Route path="/about" element={<AboutUsRouter />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     );
   }

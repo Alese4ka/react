@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 import Card from './Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
-import HeaderRouter from '../Header/Header';
+import HeaderRouter from '../../components/Header/Header';
 
 export default class MainPage extends React.Component<WithRouterProps, State> {
   constructor(props: WithRouterProps) {
@@ -36,7 +36,7 @@ export default class MainPage extends React.Component<WithRouterProps, State> {
     if (searchValueLC !== null && searchValueLC !== undefined) {
       const searchValue = JSON.parse(searchValueLC);
       return (
-        <div>
+        <div data-testid="main-page">
           <HeaderRouter title="main" />
           <SearchField defaultValue={searchValue || ''} handleChange={this.handleChange} />
           <Card />
@@ -44,7 +44,7 @@ export default class MainPage extends React.Component<WithRouterProps, State> {
       );
     }
     return (
-      <div>
+      <div data-testid="main-page">
         <HeaderRouter title="main" />
         <SearchField placeholder="Type here..." defaultValue="" handleChange={this.handleChange} />
         <Card />

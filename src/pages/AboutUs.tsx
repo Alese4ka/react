@@ -2,7 +2,7 @@
 import { WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
 import withRouter from '../helpers/HOC';
-import HeaderRouter from './Header/Header';
+import HeaderRouter from '../components/Header/Header';
 
 export default class AboutUs extends React.Component<WithRouterProps> {
   render(): ReactElement {
@@ -10,15 +10,15 @@ export default class AboutUs extends React.Component<WithRouterProps> {
     if (location) {
       const nameUrl = location.pathname.slice(1);
       return (
-        <div>
+        <div data-testid="about-link">
           <HeaderRouter title={nameUrl} />
           <h1>About Us</h1>
         </div>
       );
     }
     return (
-      <div>
-        <HeaderRouter title="not found" />
+      <div data-testid="about-link">
+        <HeaderRouter title="Not Found" />
         <h1>Not Found</h1>
       </div>
     );

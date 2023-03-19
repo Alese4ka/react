@@ -2,17 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import AppRouter from '../../router/AppRouter';
-import Header from './Header';
+import { BrowserRouter } from 'react-router-dom';
+import { HeaderRouter } from './Header';
 
 describe('USERS TEST', () => {
   test('test main link', async () => {
     render(
-      <MemoryRouter>
-        <AppRouter />
-        <Header />
-      </MemoryRouter>
+      <BrowserRouter>
+        <HeaderRouter />
+      </BrowserRouter>
     );
     const mainLink = screen.getByTestId('main-link');
     userEvent.click(mainLink);
@@ -20,10 +18,9 @@ describe('USERS TEST', () => {
   });
   test('test about link', async () => {
     render(
-      <MemoryRouter>
-        <AppRouter />
-        <Header />
-      </MemoryRouter>
+      <BrowserRouter>
+        <HeaderRouter />
+      </BrowserRouter>
     );
     const aboutLink = screen.getByTestId('about-link');
     userEvent.click(aboutLink);

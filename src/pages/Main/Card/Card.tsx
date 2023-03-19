@@ -79,7 +79,7 @@ export default class Card extends React.Component {
 
     const list = books.map((element) => {
       return (
-        <div className="card" key={element.id}>
+        <div data-testid="cards" className="card" key={element.id}>
           <div className="card-title">
             <img src="./plus.svg" alt="add" />
             <div>{element.title}</div>
