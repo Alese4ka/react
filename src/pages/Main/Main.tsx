@@ -1,11 +1,13 @@
-import { Props, State } from 'entities/main.interface';
+/* eslint-disable import/no-named-as-default */
+import { State, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
 import Card from './Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
+import HeaderRouter from '../Header/Header';
 
-export default class MainPage extends React.Component<Props, State> {
-  constructor(props: Props) {
+export default class MainPage extends React.Component<WithRouterProps, State> {
+  constructor(props: WithRouterProps) {
     super(props);
 
     this.state = {
@@ -35,6 +37,7 @@ export default class MainPage extends React.Component<Props, State> {
       const searchValue = JSON.parse(searchValueLC);
       return (
         <div>
+          <HeaderRouter title="main" />
           <SearchField defaultValue={searchValue || ''} handleChange={this.handleChange} />
           <Card />
         </div>
@@ -42,6 +45,7 @@ export default class MainPage extends React.Component<Props, State> {
     }
     return (
       <div>
+        <HeaderRouter title="main" />
         <SearchField placeholder="Type here..." defaultValue="" handleChange={this.handleChange} />
         <Card />
       </div>

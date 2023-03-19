@@ -4,6 +4,7 @@
 
 h2 {
   font-family: 'Bebas Neue', cursive;
+  text-transform: uppercase;
   font-size: 3rem;
   color: #ffffff;
   text-align: center;
@@ -11,8 +12,14 @@ h2 {
   background: url('/src/assets/logo.svg') no-repeat center;
 }
 
+.wrapper-menu {
+  display: flex;
+  justify-content: center;
+}
+
 a {
   text-decoration: none;
+  margin: 0 1rem;
 }
 
 .menu {

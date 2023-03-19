@@ -1,47 +1,30 @@
+import { WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import withRouter from '../../helpers/HOC';
 import './Header.css';
 
-export default class Header extends React.Component {
+export default class Header extends React.Component<WithRouterProps> {
   render(): ReactElement {
+    const { title } = this.props;
     return (
       <div className="wrapper">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <h2>Main Page</h2>
-                <Link to="/about">
-                  <p className="menu">About Us</p>
-                </Link>
-              </div>
-            }
-          />
-          <Route
-            path="about"
-            element={
-              <div>
-                <h2>About Us</h2>
-                <Link to="/">
-                  <p className="menu">Main Page</p>
-                </Link>
-              </div>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <div>
-                <h2>Not Found</h2>
-                <Link to="/">
-                  <p className="menu">Main Page</p>
-                </Link>
-              </div>
-            }
-          />
-        </Routes>
+        <h2>{title}</h2>
+        <div className="wrapper-menu">
+          <Link to="/">
+            <p data-testid="main-page" className="menu">
+              Main Page
+            </p>
+          </Link>
+          <Link to="/about">
+            <p data-testid="about-page" className="menu">
+              About Us
+            </p>
+          </Link>
+        </div>
       </div>
     );
   }
 }
+
+export const HeaderRouter = withRouter(Header);
