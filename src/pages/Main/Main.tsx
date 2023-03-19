@@ -1,8 +1,8 @@
 import { Props, State } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
 import Card from './Card/Card';
-import SearchField from './SearchField/SearchField';
 import './Main.css';
+import SearchField from './SearchField/SearchField';
 
 export default class MainPage extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -34,17 +34,17 @@ export default class MainPage extends React.Component<Props, State> {
     if (searchValueLC !== null && searchValueLC !== undefined) {
       const searchValue = JSON.parse(searchValueLC);
       return (
-        <>
+        <div>
           <SearchField defaultValue={searchValue || ''} handleChange={this.handleChange} />
           <Card />
-        </>
+        </div>
       );
     }
     return (
-      <>
+      <div>
         <SearchField placeholder="Type here..." defaultValue="" handleChange={this.handleChange} />
         <Card />
-      </>
+      </div>
     );
   }
 }

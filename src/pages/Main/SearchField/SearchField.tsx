@@ -8,7 +8,7 @@ export default class SearchField extends React.Component<PropsSearchField> {
     const { handleChange } = this.props;
 
     return (
-      <form className="form">
+      <form className="form" onSubmit={(e) => e.preventDefault()}>
         <input
           className="form-input"
           id="search"
