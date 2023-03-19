@@ -14,7 +14,7 @@ describe('USERS TEST', () => {
     );
     const mainLink = screen.getByTestId('main-link');
     userEvent.click(mainLink);
-    expect(screen.getByTestId('main-page')).toBeInTheDocument();
+    expect(screen.getByTestId('main')).toBeInTheDocument();
   });
   test('test about link', async () => {
     render(

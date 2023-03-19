@@ -12,7 +12,7 @@ export default class Header extends React.Component<WithRouterProps> {
         <h2>{title}</h2>
         <div className="wrapper-menu">
           <Link to="/" data-testid="main-link">
-            <p data-testid="main-page" className="menu">
+            <p data-testid="main" className="menu">
               Main Page
             </p>
           </Link>
