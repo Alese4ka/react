@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --fix ./src",
-    "test": "vitest"
+    "test": "npx vitest run --coverage.enabled --coverage.provider=c8 --coverage ./src"
   },
   "husky": {
     "hooks": {
@@ -29,6 +29,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
