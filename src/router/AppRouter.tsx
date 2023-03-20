@@ -8,7 +8,7 @@ export default class AppRouter extends React.Component {
   render(): ReactElement {
     return (
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route index element={<MainPage />} />
         <Route path="/about" element={<AboutUsRouter />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

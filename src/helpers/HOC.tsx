@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable react/jsx-props-no-spreading */
 import { WithRouterProps } from 'entities/main.interface';
 import React from 'react';
