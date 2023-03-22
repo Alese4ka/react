@@ -35,7 +35,8 @@
   flex: 50%;
 }
 
-.form-user-main-info, .form-user-add-info {
+.form-user-main-info,
+.form-user-add-info {
   display: flex;
   flex-direction: column;
   margin: 4rem;
@@ -48,7 +49,8 @@
   margin-bottom: 1rem;
 }
 
-.form-user-input, .form-user-select  {
+.form-user-input,
+.form-user-select {
   margin-top: 0.25rem;
   padding: 0.75rem;
 }
@@ -60,7 +62,6 @@
 .form-user-input-sex {
   margin-right: 0.5rem;
 }
-
 
 .form-user-file-input::-webkit-file-upload-button {
   display: none;
@@ -108,7 +109,7 @@
   left: -5%;
 }
 
-.form-user-submit-border:active { 
+.form-user-submit-border:active {
   border: none;
 }
 
@@ -121,12 +122,12 @@
   bottom: -8%;
   right: 0;
   left: 0;
-  border: none; 
-  background: #B2D358;
+  border: none;
+  background: #b2d358;
   border-radius: 50px;
   cursor: pointer;
 }
 
-.form-user-submit:active { 
+.form-user-submit:active {
   background: #719218;
 }
