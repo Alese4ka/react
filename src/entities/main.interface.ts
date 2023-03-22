@@ -5,6 +5,10 @@ export interface StateSearch {
   searchValue: string;
 }
 
+export interface UserFormType {
+  title: string;
+}
+
 export interface PropsSearchField {
   placeholder?: string;
   defaultValue?: string;
