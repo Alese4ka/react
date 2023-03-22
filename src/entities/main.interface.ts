@@ -1,7 +1,7 @@
 import { FormEventHandler } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export interface State {
+export interface StateSearch {
   searchValue: string;
 }
 

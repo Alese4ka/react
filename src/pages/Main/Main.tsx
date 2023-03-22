@@ -1,12 +1,12 @@
 /* eslint-disable import/no-named-as-default */
-import { State, WithRouterProps } from 'entities/main.interface';
+import { StateSearch, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
 import Card from './Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';
 
-export default class MainPage extends React.Component<WithRouterProps, State> {
+export default class MainPage extends React.Component<WithRouterProps, StateSearch> {
   constructor(props: WithRouterProps) {
     super(props);
 

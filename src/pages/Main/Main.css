@@ -13,7 +13,6 @@
   border: none;
   background: url('/src/assets/search.svg') no-repeat left 2% bottom 50% #ffffff;
   background-size: 1.5rem;
-  font-family: 'Roboto', sans-serif;
 }
 
 #search::-webkit-search-cancel-button {

@@ -21,6 +21,11 @@ export default class Header extends React.Component<WithRouterProps> {
               About Us
             </p>
           </Link>
+          <Link to="/form" data-testid="form-link">
+            <p data-testid="form-page" className="menu">
+              Form
+            </p>
+          </Link>
         </div>
       </div>
     );
