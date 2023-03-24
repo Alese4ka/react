@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/no-named-as-default */
 import { StateForm, StateUserFormType, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
