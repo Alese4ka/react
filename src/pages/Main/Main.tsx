@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import { StateSearch, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
-import Card from './Card/Card';
+import Card from '../../components/Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';

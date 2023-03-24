@@ -3,16 +3,15 @@
 }
 
 .wrapper-form {
-  height: 77.4vh;
-  padding-top: 5rem;
+  height: 45vh;
+  padding-top: 2rem;
 }
 
 .form-user {
   background-color: #ffffff;
   width: 60rem;
-  height: 25rem;
+  height: 22rem;
   margin: 0 auto;
-  padding-bottom: 1rem;
   display: flex;
   position: relative;
 }
@@ -31,7 +30,7 @@
 .form-user-main-info {
   display: flex;
   flex-direction: column;
-  margin: 4rem;
+  margin: 2rem 4rem;
   flex: 50%;
 }
 
@@ -39,29 +38,107 @@
 .form-user-add-info {
   display: flex;
   flex-direction: column;
-  margin: 4rem;
+  margin: 2rem 4rem;
   flex: 50%;
 }
 
 .form-user-label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-top: 0.75rem;
+}
+
+.form-user-label:first-child {
+  margin-top: 0;
 }
 
 .form-user-input,
 .form-user-select {
   margin-top: 0.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
 }
 
-.form-user-label-sex {
-  margin: 0.5rem 2rem 1rem 0;
+.error {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border-color: #d45869;
+}
+
+.error-text-none {
+  display: none;
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: #d45869;
+}
+
+/* .form-user-label-sex {
+  margin: 1rem 2rem 1rem 0;
+} */
+
+/* .switch-field {
+  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+  padding: 40px;
+	overflow: hidden;
+} */
+/* 
+.switch-title {
+	font-weight: bold;
+  margin-bottom: 6px;
+} */
+
+.form-user-form-sex {
+  margin: 1rem 2rem 0rem 0;
 }
 
 .form-user-input-sex {
-  margin-right: 0.5rem;
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
 }
+
+.form-user-label-sex {
+  display: inline-block;
+  width: 100px;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.1s ease-in-out;
+}
+
+.form-user-label-sex:hover {
+	cursor: pointer;
+}
+
+.form-user-form-sex .form-user-input-sex:checked + .form-user-label-sex {
+  background-color: #d45869;
+	color: #fff;
+  box-shadow: none;
+}
+
+.form-user-form-sex .form-user-label-sex:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.form-user-form-sex .form-user-label-sex:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+
+
+/* .form-user-input-sex {
+  margin-right: 0.5rem;
+} */
 
 .form-user-file-input::-webkit-file-upload-button {
   display: none;
@@ -73,7 +150,7 @@
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
   border-radius: 3px;
-  padding: 0.75rem 2rem;
+  padding: 0.45rem 2.45rem;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -89,7 +166,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 1.5rem 0;
+  margin-top: 0.75rem;
   font-size: 0.75rem;
 }
 
@@ -110,7 +187,7 @@
 }
 
 .form-user-submit-border:active {
-  border: none;
+  /* border: none; */
 }
 
 .form-user-submit {
@@ -129,5 +206,10 @@
 }
 
 .form-user-submit:active {
-  background: #719218;
+  /* background: #719218; */
+}
+
+.user-info-cards {
+  padding-top: 0.5rem;
+  background-color: #ffffff;
 }
