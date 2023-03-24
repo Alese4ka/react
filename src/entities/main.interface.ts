@@ -73,13 +73,9 @@ export interface PropsCard {
   userInfo: StateUserFormType[];
 }
 
-export interface PropsHeader {
-  title: string;
-}
-
 export interface WithRouterProps {
+  title?: string;
   location?: ReturnType<typeof useLocation>;
   params?: Record<string, string>;
   navigate?: ReturnType<typeof useNavigate>;
-  title?: string;
 }

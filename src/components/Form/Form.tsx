@@ -4,7 +4,7 @@ import { ErrorType, FormType, StateFormType, StateUserFormType } from 'entities/
 import validate from '../../helpers/validate';
 import countries from '../../entities/countries';
 
-export default class CustomInput extends React.Component<FormType, StateFormType> {
+export default class Form extends React.Component<FormType, StateFormType> {
   userForm = React.createRef<HTMLFormElement>();
 
   constructor(props: FormType) {
@@ -32,9 +32,10 @@ export default class CustomInput extends React.Component<FormType, StateFormType
     this.handleUserCountryChange = this.handleUserCountryChange.bind(this);
     this.handleUserSexChange = this.handleUserSexChange.bind(this);
     this.handleUserConfirmChange = this.handleUserConfirmChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetForm = this.resetForm.bind(this);
     this.toggleLeftState = this.toggleLeftState.bind(this);
     this.toggleRightState = this.toggleRightState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
   }
 
@@ -91,16 +92,18 @@ export default class CustomInput extends React.Component<FormType, StateFormType
     };
     const { submit } = this.props;
     submit(user);
+    this.resetForm();
+    this.setState({ isSubmit: false });
+  }
+
+  resetForm(): void {
     this.setState({
       userName: '',
       userSurname: '',
-      userDate: '',
-      userCountry: '',
-      userSex: false,
-      userPhoto: '',
-      userConfirm: false,
+      toggleLeft: true,
+      toggleRight: true,
     });
-    this.setState({ isSubmit: false });
+    this.userForm.current!.reset();
   }
 
   uploadFile(event: React.ChangeEvent<HTMLInputElement>): void {
@@ -330,8 +333,14 @@ export default class CustomInput extends React.Component<FormType, StateFormType
               Checked is required
             </div>
           </div>
-          <button type="submit" className="form-user-submit" disabled={isDisabled}>
-            <div className="form-user-submit-border" />
+          <button
+            type="submit"
+            className={isDisabled ? 'form-user-error' : 'form-user-submit'}
+            disabled={isDisabled}
+          >
+            <div
+              className={isDisabled ? 'form-user-submit-border-error' : 'form-user-submit-border'}
+            />
             Save
           </button>
         </form>

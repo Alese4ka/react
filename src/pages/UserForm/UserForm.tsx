@@ -1,10 +1,13 @@
-import { StateForm, StateUserFormType, UserFormType } from 'entities/main.interface';
+/* eslint-disable import/no-named-as-default */
+import { StateForm, StateUserFormType, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
-import Card from '../../../components/Card/Card';
-import CustomInput from '../../../components/CustomInput/CustomInput';
+import HeaderRouter from '../../components/Header/Header';
+import withRouter from '../../helpers/HOC';
+import Card from '../../components/Card/Card';
+import Form from '../../components/Form/Form';
 import './UserForm.css';
 
-export default class UserForm extends React.Component<UserFormType, StateForm> {
+export default class UserForm extends React.Component<WithRouterProps, StateForm> {
   userName: React.RefObject<HTMLInputElement>;
   userSurname: React.RefObject<HTMLInputElement>;
   userDate: React.RefObject<HTMLInputElement>;
@@ -14,7 +17,7 @@ export default class UserForm extends React.Component<UserFormType, StateForm> {
   userConfirm: React.RefObject<HTMLInputElement>;
   userPhoto: React.RefObject<HTMLInputElement>;
 
-  constructor(props: UserFormType) {
+  constructor(props: WithRouterProps) {
     super(props);
 
     this.userName = React.createRef();
@@ -30,10 +33,10 @@ export default class UserForm extends React.Component<UserFormType, StateForm> {
       userCards: [],
     };
 
-    this.handleSubmitted = this.handleSubmitted.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmitted(user: StateUserFormType) {
+  handleSubmit(user: StateUserFormType): void {
     const { userCards } = this.state;
     this.setState({ userCards: [...userCards, user] });
     alert(`${this.userName.current!.value} ${this.userSurname.current!.value}`);
@@ -41,13 +44,42 @@ export default class UserForm extends React.Component<UserFormType, StateForm> {
 
   render(): ReactElement {
     const { userCards } = this.state;
-
+    const { location } = this.props;
+    if (location) {
+      const nameUrl = location.pathname.slice(1);
+      return (
+        <div>
+          <HeaderRouter title={nameUrl} />
+          <div className="wrapper">
+            <div className="wrapper-form">
+              <Form
+                submit={this.handleSubmit}
+                refs={{
+                  refUserName: this.userName,
+                  refUserSurname: this.userSurname,
+                  refUserDate: this.userDate,
+                  refUserCountry: this.userCountry,
+                  refUserSexF: this.userSexF,
+                  refUserSex: this.userSex,
+                  refUserPhoto: this.userPhoto,
+                  refUserConfirm: this.userConfirm,
+                }}
+              />
+            </div>
+          </div>
+          <div className="user-info-cards">
+            <Card userInfo={userCards} />
+          </div>
+        </div>
+      );
+    }
     return (
       <div>
+        <HeaderRouter title="not found" />
         <div className="wrapper">
           <div className="wrapper-form">
-            <CustomInput
-              submit={this.handleSubmitted}
+            <Form
+              submit={this.handleSubmit}
               refs={{
                 refUserName: this.userName,
                 refUserSurname: this.userSurname,
@@ -68,3 +100,5 @@ export default class UserForm extends React.Component<UserFormType, StateForm> {
     );
   }
 }
+
+export const UserFormRouter = withRouter(UserForm);
