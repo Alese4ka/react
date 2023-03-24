@@ -153,7 +153,8 @@
   margin-right: 1rem;
 }
 
-.form-user-submit-border, .form-user-submit-border-error {
+.form-user-submit-border,
+.form-user-submit-border-error {
   border: 1.5px solid #000000;
   border-radius: 50px;
   position: absolute;
@@ -169,7 +170,8 @@
   border: none;
 }
 
-.form-user-submit, .form-user-error {
+.form-user-submit,
+.form-user-error {
   font-size: 1rem;
   position: absolute;
   margin: 1rem auto;
@@ -184,7 +186,7 @@
   cursor: pointer;
 }
 
-.form-user-error { 
+.form-user-error {
   color: grey;
 }
 
