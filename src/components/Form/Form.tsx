@@ -40,27 +40,33 @@ export default class Form extends React.Component<FormType, StateFormType> {
   }
 
   handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ isSubmit: true });
     this.setState({ userName: event.target.value });
   }
 
   handleUserSurnameChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ isSubmit: true });
     this.setState({ userSurname: event.target.value });
   }
 
   handleUserDateChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ isSubmit: true });
     this.setState({ userDate: event.target.value });
   }
 
   handleUserCountryChange(event: React.ChangeEvent<HTMLSelectElement>): void {
+    this.setState({ isSubmit: true });
     this.setState({ userCountry: event.target.value });
   }
 
   handleUserSexChange(value: string): void {
+    this.setState({ isSubmit: true });
     this.setState({ userSex: true });
     this.setState({ userSexValue: value });
   }
 
   handleUserConfirmChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ isSubmit: true });
     this.setState({ userConfirm: event.target.checked });
   }
 
@@ -196,8 +202,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
       userPhoto,
       userConfirm
     );
-    const isDisabled =
-      Object.keys(errors).some((field) => errors[field as keyof ErrorType]) && isSubmit;
+    const isDisabled = Object.keys(errors).some((field) => errors[field as keyof ErrorType]);
 
     const shouldMarkError = (field: string) => {
       const hasError = errors[field as keyof ErrorType];
