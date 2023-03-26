@@ -14,6 +14,5 @@ describe('Card', () => {
     expect(img).toBeTruthy();
 
     expect(screen.findByTestId('cards'));
-    expect(screen.findByTestId('card'));
   });
 });

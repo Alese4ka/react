@@ -1,3 +1,10 @@
+function checkFirstLetter(value: string) {
+  if (value.length === 0) {
+    return true;
+  }
+  return !(value.charAt(0).toUpperCase() === value.charAt(0));
+}
+
 export default function validate(
   userName: string,
   userSurname: string,
@@ -8,8 +15,8 @@ export default function validate(
   userConfirm: boolean
 ) {
   return {
-    userName: userName.length === 0,
-    userSurname: userSurname.length === 0,
+    userName: checkFirstLetter(userName),
+    userSurname: checkFirstLetter(userSurname),
     userDate: userDate === '',
     userCountry: userCountry === '',
     userSex: userSex === false,

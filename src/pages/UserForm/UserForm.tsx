@@ -49,7 +49,7 @@ export default class UserForm extends React.Component<WithRouterProps, StateForm
     if (location) {
       const nameUrl = location.pathname.slice(1);
       return (
-        <div>
+        <div data-testid="form-page">
           <HeaderRouter title={nameUrl} />
           <div className="wrapper">
             <div className="wrapper-form">
@@ -75,28 +75,9 @@ export default class UserForm extends React.Component<WithRouterProps, StateForm
       );
     }
     return (
-      <div>
-        <HeaderRouter title="not found" />
-        <div className="wrapper">
-          <div className="wrapper-form">
-            <Form
-              submit={this.handleSubmit}
-              refs={{
-                refUserName: this.userName,
-                refUserSurname: this.userSurname,
-                refUserDate: this.userDate,
-                refUserCountry: this.userCountry,
-                refUserSexF: this.userSexF,
-                refUserSex: this.userSex,
-                refUserPhoto: this.userPhoto,
-                refUserConfirm: this.userConfirm,
-              }}
-            />
-          </div>
-        </div>
-        <div className="user-info-cards">
-          <Card userInfo={userCards} />
-        </div>
+      <div data-testid="form-page">
+        <HeaderRouter title="Not Found" />
+        <h1>Not Found</h1>
       </div>
     );
   }

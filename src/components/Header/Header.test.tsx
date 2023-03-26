@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { HeaderRouter } from './Header';
@@ -25,5 +24,15 @@ describe('USERS TEST', () => {
     const aboutLink = screen.getByTestId('about-link');
     userEvent.click(aboutLink);
     expect(screen.getByTestId('about-page')).toBeInTheDocument();
+  });
+  test('test form link', async () => {
+    render(
+      <BrowserRouter>
+        <HeaderRouter />
+      </BrowserRouter>
+    );
+    const formLink = screen.getByTestId('form-link');
+    userEvent.click(formLink);
+    expect(screen.getByTestId('form-page')).toBeInTheDocument();
   });
 });

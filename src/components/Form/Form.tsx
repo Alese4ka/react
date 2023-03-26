@@ -100,6 +100,11 @@ export default class Form extends React.Component<FormType, StateFormType> {
     this.setState({
       userName: '',
       userSurname: '',
+      userDate: '',
+      userCountry: '',
+      userSex: false,
+      userPhoto: '',
+      userConfirm: false,
       toggleLeft: true,
       toggleRight: true,
     });
@@ -142,13 +147,9 @@ export default class Form extends React.Component<FormType, StateFormType> {
   }
 
   canBeSubmitted() {
-    const { userName } = this.state;
-    const { userSurname } = this.state;
-    const { userDate } = this.state;
-    const { userCountry } = this.state;
-    const { userSex } = this.state;
-    const { userPhoto } = this.state;
-    const { userConfirm } = this.state;
+    const { userName, userSurname, userDate, userCountry, userSex, userPhoto, userConfirm } =
+      this.state;
+
     const errors = validate(
       userName,
       userSurname,
@@ -165,15 +166,16 @@ export default class Form extends React.Component<FormType, StateFormType> {
 
   render(): ReactElement {
     const { refs } = this.props;
-    const { refUserName } = refs;
-    const { refUserSurname } = refs;
-    const { refUserDate } = refs;
-    const { refUserCountry } = refs;
-    const { refUserSex } = refs;
-    const { refUserSexF } = refs;
-    const { refUserPhoto } = refs;
-    const { refUserConfirm } = refs;
-
+    const {
+      refUserName,
+      refUserSurname,
+      refUserDate,
+      refUserCountry,
+      refUserSex,
+      refUserSexF,
+      refUserPhoto,
+      refUserConfirm,
+    } = refs || {};
     const { isSubmit } = this.state;
     const { userName } = this.state;
     const { userSurname } = this.state;
@@ -184,6 +186,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
     const { userConfirm } = this.state;
     const { toggleLeft } = this.state;
     const { toggleRight } = this.state;
+
     const errors = validate(
       userName,
       userSurname,
@@ -216,12 +219,14 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 type="text"
                 placeholder="Name"
                 ref={refUserName}
-                value={userName}
                 onChange={this.handleUserNameChange}
               />
             </label>
-            <div className={shouldMarkError('userName') ? 'error-text' : 'error-text-none'}>
-              Name is required
+            <div
+              data-testid="name-error"
+              className={shouldMarkError('userName') ? 'error-text' : 'error-text-none'}
+            >
+              Name is required or starts with uppercased letter
             </div>
             <label htmlFor="surname" className="form-user-label">
               Surname
@@ -231,12 +236,14 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 type="text"
                 placeholder="Surname"
                 ref={refUserSurname}
-                value={userSurname}
                 onChange={this.handleUserSurnameChange}
               />
             </label>
-            <div className={shouldMarkError('userSurname') ? 'error-text' : 'error-text-none'}>
-              Surname is required
+            <div
+              data-testid="surname-error"
+              className={shouldMarkError('userSurname') ? 'error-text' : 'error-text-none'}
+            >
+              Surname is required or starts with uppercased letter
             </div>
             <label htmlFor="date" className="form-user-label">
               Date of birth
@@ -248,7 +255,10 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 onChange={this.handleUserDateChange}
               />
             </label>
-            <div className={shouldMarkError('userDate') ? 'error-text' : 'error-text-none'}>
+            <div
+              data-testid="date-error"
+              className={shouldMarkError('userDate') ? 'error-text' : 'error-text-none'}
+            >
               Date is invalid
             </div>
           </div>
@@ -270,7 +280,10 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 ))}
               </select>
             </label>
-            <div className={shouldMarkError('userCountry') ? 'error-text' : 'error-text-none'}>
+            <div
+              data-testid="country-error"
+              className={shouldMarkError('userCountry') ? 'error-text' : 'error-text-none'}
+            >
               Country is required
             </div>
             <div className="form-user-form-sex">
@@ -304,21 +317,30 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 </label>
               </label>
             </div>
-            <div className={shouldMarkError('userSex') ? 'error-text' : 'error-text-none'}>
+            <div
+              data-testid="sex-error"
+              className={shouldMarkError('userSex') ? 'error-text' : 'error-text-none'}
+            >
               Sex is required
             </div>
             <input
+              data-testid="file-input"
+              id="file"
               type="file"
               accept="image/*"
               className="form-user-file-input"
               ref={refUserPhoto}
               onChange={this.uploadFile}
             />
-            <div className={shouldMarkError('userPhoto') ? 'error-text' : 'error-text-none'}>
+            <div
+              data-testid="file-error"
+              className={shouldMarkError('userPhoto') ? 'error-text' : 'error-text-none'}
+            >
               File is required
             </div>
             <label htmlFor="personal-data" className="form-user-label-personal">
               <input
+                data-testid="checkbox-input"
                 className="form-user-checkbox-personal"
                 id="personal-data"
                 type="checkbox"
@@ -329,7 +351,10 @@ export default class Form extends React.Component<FormType, StateFormType> {
               />
               By submitting your contact information, you agree on processing of your personal data.
             </label>
-            <div className={shouldMarkError('userConfirm') ? 'error-text' : 'error-text-none'}>
+            <div
+              data-testid="checked-error"
+              className={shouldMarkError('userConfirm') ? 'error-text' : 'error-text-none'}
+            >
               Checked is required
             </div>
           </div>

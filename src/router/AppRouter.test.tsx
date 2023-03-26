@@ -12,11 +12,16 @@ describe('TEST APP', () => {
       </MemoryRouter>
     );
     const mainLink = screen.getByTestId('main-link');
+    userEvent.click(mainLink);
+    expect(screen.getByTestId('main-page')).toBeInTheDocument();
+
     const aboutLink = screen.getByTestId('about-link');
     userEvent.click(aboutLink);
     expect(screen.getByTestId('about-page')).toBeInTheDocument();
-    userEvent.click(mainLink);
-    expect(screen.getByTestId('main-page')).toBeInTheDocument();
+
+    const formLink = screen.getByTestId('form-link');
+    userEvent.click(formLink);
+    expect(screen.getByTestId('form-page')).toBeInTheDocument();
   });
 
   test('Error page test', () => {
