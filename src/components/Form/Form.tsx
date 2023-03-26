@@ -97,7 +97,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
       userConfirm,
     };
     const { submit } = this.props;
-    submit(user);
+    submit!(user);
     this.resetForm();
     this.setState({ isSubmit: false });
   }
@@ -148,7 +148,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
   checkSexValidation() {
     const { refs } = this.props;
     this.setState({
-      userSex: !!(refs.refUserSexF?.current?.checked || refs.refUserSex?.current?.checked),
+      userSex: !!(refs!.refUserSexF?.current?.checked || refs!.refUserSex?.current?.checked),
     });
   }
 

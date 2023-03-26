@@ -1,5 +1,6 @@
 import { FormEventHandler, LegacyRef, RefObject } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { BookData } from './bookData.interface';
 
 export interface StateSearch {
   searchValue: string;
@@ -48,8 +49,8 @@ export interface UserFormType {
 }
 
 export interface FormType {
-  submit: (user: StateUserFormType) => void;
-  refs: RefsFormType;
+  submit?: (user: StateUserFormType) => void;
+  refs?: RefsFormType;
 }
 
 export interface RefsFormType {
@@ -70,7 +71,7 @@ export interface PropsSearchField {
 }
 
 export interface PropsCard {
-  userInfo: StateUserFormType[];
+  userInfo?: StateUserFormType[];
 }
 
 export interface WithRouterProps {
