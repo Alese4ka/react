@@ -5,7 +5,6 @@ import Card from '../../components/Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';
-import books from '../../entities/books';
 
 export default class MainPage extends React.Component<WithRouterProps, StateSearch> {
   constructor(props: WithRouterProps) {
