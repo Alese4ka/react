@@ -42,6 +42,13 @@ export interface StateFormType {
   toggleRight: boolean;
   isSubmit: boolean;
   isSaved: boolean;
+  isErrorName: boolean;
+  isErrorSurname: boolean;
+  isErrorDate: boolean;
+  isErrorCountry: boolean;
+  isErrorSex: boolean;
+  isErrorPhoto: boolean;
+  isErrorConfirm: boolean;
 }
 
 export interface UserFormType {

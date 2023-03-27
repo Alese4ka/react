@@ -1,7 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ReactElement } from 'react';
 import { ErrorType, FormType, StateFormType, StateUserFormType } from 'entities/main.interface';
-import validate from '../../helpers/validate';
+import {
+  validate,
+  validateUserConfirm,
+  validateUserCountry,
+  validateUserDate,
+  validateUserName,
+  validateUserPhoto,
+  validateUserSex,
+  validateUserSurname,
+} from '../../helpers/validate';
 import countries from '../../entities/countries';
 
 export default class Form extends React.Component<FormType, StateFormType> {
@@ -23,6 +32,13 @@ export default class Form extends React.Component<FormType, StateFormType> {
       toggleRight: true,
       isSubmit: false,
       isSaved: false,
+      isErrorName: false,
+      isErrorSurname: false,
+      isErrorDate: false,
+      isErrorCountry: false,
+      isErrorSex: false,
+      isErrorPhoto: false,
+      isErrorConfirm: false,
     };
 
     this.userForm = React.createRef();
@@ -72,21 +88,40 @@ export default class Form extends React.Component<FormType, StateFormType> {
   }
 
   handleSubmit(event: React.ChangeEvent<HTMLFormElement>): void {
+    const { userName } = this.state;
+    const { userSurname } = this.state;
+    const { userDate } = this.state;
+    const { userCountry } = this.state;
+    const { userSex } = this.state;
+    const { userPhoto } = this.state;
+    const { userConfirm } = this.state;
+    const { userSexValue } = this.state;
+
+    const isErrorName = validateUserName(userName);
+    const isErrorSurname = validateUserSurname(userSurname);
+    const isErrorDate = validateUserDate(userDate);
+    const isErrorCountry = validateUserCountry(userCountry);
+    const isErrorSex = validateUserSex(userSex);
+    const isErrorPhoto = validateUserPhoto(userPhoto);
+    const isErrorConfirm = validateUserConfirm(userConfirm);
+
+    this.setState({
+      isErrorName,
+      isErrorSurname,
+      isErrorDate,
+      isErrorCountry,
+      isErrorSex,
+      isErrorPhoto,
+      isErrorConfirm,
+    });
+
     if (!this.canBeSubmitted()) {
       this.setState({ isSubmit: true });
       event.preventDefault();
       return;
     }
-
     event.preventDefault();
     this.setState({ isSubmit: true });
-    const { userName } = this.state;
-    const { userSurname } = this.state;
-    const { userDate } = this.state;
-    const { userCountry } = this.state;
-    const { userSexValue } = this.state;
-    const { userPhoto } = this.state;
-    const { userConfirm } = this.state;
     const user: StateUserFormType = {
       id: `id${Math.random().toString(16).slice(2)}`,
       userName,
@@ -112,9 +147,16 @@ export default class Form extends React.Component<FormType, StateFormType> {
       userCountry: '',
       userSex: false,
       userPhoto: '',
-      userConfirm: true,
+      userConfirm: false,
       toggleLeft: true,
       toggleRight: true,
+      isErrorName: false,
+      isErrorSurname: false,
+      isErrorDate: false,
+      isErrorCountry: false,
+      isErrorSex: false,
+      isErrorPhoto: false,
+      isErrorConfirm: false,
     });
     this.userForm.current!.reset();
   }
@@ -195,6 +237,13 @@ export default class Form extends React.Component<FormType, StateFormType> {
     const { toggleLeft } = this.state;
     const { toggleRight } = this.state;
     const { isSaved } = this.state;
+    const { isErrorName } = this.state;
+    const { isErrorSurname } = this.state;
+    const { isErrorDate } = this.state;
+    const { isErrorCountry } = this.state;
+    const { isErrorSex } = this.state;
+    const { isErrorPhoto } = this.state;
+    const { isErrorConfirm } = this.state;
 
     const errors = validate(
       userName,
@@ -208,13 +257,6 @@ export default class Form extends React.Component<FormType, StateFormType> {
     const isDisabled =
       Object.keys(errors).some((field) => errors[field as keyof ErrorType]) && isSubmit;
 
-    const shouldMarkError = (field: string) => {
-      const hasError = errors[field as keyof ErrorType];
-      const shouldShow = isSubmit;
-
-      return hasError ? shouldShow : false;
-    };
-
     return (
       <div>
         <form className="form-user" ref={this.userForm} onSubmit={this.handleSubmit}>
@@ -223,7 +265,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             <label htmlFor="name" className="form-user-label">
               Name
               <input
-                className={shouldMarkError('userName') ? 'error' : 'form-user-input'}
+                className={isErrorName ? 'error' : 'form-user-input'}
                 id="name"
                 type="text"
                 maxLength={8}
@@ -233,7 +275,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
               />
             </label>
             <div data-testid="name-error">
-              {shouldMarkError('userName') ? (
+              {isErrorName ? (
                 <div className="error-text">Name is required or starts with uppercased letter</div>
               ) : (
                 <div className="error-text-name">Name must be no more than 8 characters</div>
@@ -242,7 +284,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             <label htmlFor="surname" className="form-user-label">
               Surname
               <input
-                className={shouldMarkError('userSurname') ? 'error' : 'form-user-input'}
+                className={isErrorSurname ? 'error' : 'form-user-input'}
                 id="surname"
                 type="text"
                 maxLength={8}
@@ -252,7 +294,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
               />
             </label>
             <div data-testid="surname-error">
-              {shouldMarkError('userName') ? (
+              {isErrorSurname ? (
                 <div className="error-text">Name is required or starts with uppercased letter</div>
               ) : (
                 <div className="error-text-name">Surname must be no more than 8 characters</div>
@@ -261,7 +303,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             <label htmlFor="date" className="form-user-label">
               Date of birth
               <input
-                className={shouldMarkError('userDate') ? 'error' : 'form-user-input'}
+                className={isErrorDate ? 'error' : 'form-user-input'}
                 id="date"
                 type="date"
                 ref={refUserDate}
@@ -270,7 +312,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             </label>
             <div
               data-testid="date-error"
-              className={shouldMarkError('userDate') ? 'error-text' : 'error-text-none'}
+              className={isErrorDate ? 'error-text' : 'error-text-none'}
             >
               Date is invalid
             </div>
@@ -281,7 +323,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
               <select
                 id="country"
                 defaultValue="defaultValue"
-                className={shouldMarkError('userCountry') ? 'error' : 'form-user-select'}
+                className={isErrorCountry ? 'error' : 'form-user-select'}
                 ref={refUserCountry}
                 onChange={this.handleUserCountryChange}
               >
@@ -295,7 +337,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             </label>
             <div
               data-testid="country-error"
-              className={shouldMarkError('userCountry') ? 'error-text' : 'error-text-none'}
+              className={isErrorCountry ? 'error-text' : 'error-text-none'}
             >
               Country is required
             </div>
@@ -330,10 +372,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 </label>
               </label>
             </div>
-            <div
-              data-testid="sex-error"
-              className={shouldMarkError('userSex') ? 'error-text' : 'error-text-none'}
-            >
+            <div data-testid="sex-error" className={isErrorSex ? 'error-text' : 'error-text-none'}>
               Sex is required
             </div>
             <input
@@ -347,7 +386,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             />
             <div
               data-testid="file-error"
-              className={shouldMarkError('userPhoto') ? 'error-text' : 'error-text-none'}
+              className={isErrorPhoto ? 'error-text' : 'error-text-none'}
             >
               File is required
             </div>
@@ -359,6 +398,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 type="checkbox"
                 value="agree"
                 name="agree"
+                checked={userConfirm}
                 ref={refUserConfirm}
                 onChange={this.handleUserConfirmChange}
               />
@@ -366,7 +406,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             </label>
             <div
               data-testid="checked-error"
-              className={shouldMarkError('userConfirm') ? 'error-text' : 'error-text-none'}
+              className={isErrorConfirm ? 'error-text' : 'error-text-none'}
             >
               Checked is required
             </div>
