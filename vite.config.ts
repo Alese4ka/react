@@ -3,6 +3,7 @@
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -18,6 +19,7 @@ export default defineConfig({
       reporter: ['text'],
       all: true,
       include: ['**/*.{jsx,tsx}'],
+      exclude: [...configDefaults.exclude, 'src/helpers/*'],
     },
   },
 });
