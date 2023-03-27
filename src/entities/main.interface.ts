@@ -41,6 +41,7 @@ export interface StateFormType {
   toggleLeft: boolean;
   toggleRight: boolean;
   isSubmit: boolean;
+  isSaved: boolean;
 }
 
 export interface UserFormType {

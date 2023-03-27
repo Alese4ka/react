@@ -64,8 +64,13 @@
   border-color: #d45869;
 }
 
+.error-text-name {
+  font-size: 0.75rem;
+  color: black;
+}
+
 .error-text-none {
-  display: none;
+ display: none;
 }
 
 .error-text {
@@ -197,4 +202,12 @@
 .user-info-cards {
   padding-top: 0.5rem;
   background-color: #ffffff;
+}
+
+.saved-info {
+  text-align: center;
+    margin-top: 3.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: white;
 }

@@ -22,6 +22,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
       toggleLeft: true,
       toggleRight: true,
       isSubmit: false,
+      isSaved: false,
     };
 
     this.userForm = React.createRef();
@@ -40,33 +41,33 @@ export default class Form extends React.Component<FormType, StateFormType> {
   }
 
   handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userName: event.target.value });
   }
 
   handleUserSurnameChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userSurname: event.target.value });
   }
 
   handleUserDateChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userDate: event.target.value });
   }
 
   handleUserCountryChange(event: React.ChangeEvent<HTMLSelectElement>): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userCountry: event.target.value });
   }
 
   handleUserSexChange(value: string): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userSex: true });
     this.setState({ userSexValue: value });
   }
 
   handleUserConfirmChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSubmit: true });
+    this.setState({ isSaved: false });
     this.setState({ userConfirm: event.target.checked });
   }
 
@@ -98,6 +99,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
     };
     const { submit } = this.props;
     submit!(user);
+    this.setState({ isSaved: true });
     this.resetForm();
     this.setState({ isSubmit: false });
   }
@@ -110,7 +112,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
       userCountry: '',
       userSex: false,
       userPhoto: '',
-      userConfirm: false,
+      userConfirm: true,
       toggleLeft: true,
       toggleRight: true,
     });
@@ -192,6 +194,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
     const { userConfirm } = this.state;
     const { toggleLeft } = this.state;
     const { toggleRight } = this.state;
+    const { isSaved } = this.state;
 
     const errors = validate(
       userName,
@@ -202,7 +205,8 @@ export default class Form extends React.Component<FormType, StateFormType> {
       userPhoto,
       userConfirm
     );
-    const isDisabled = Object.keys(errors).some((field) => errors[field as keyof ErrorType]);
+    const isDisabled =
+      Object.keys(errors).some((field) => errors[field as keyof ErrorType]) && isSubmit;
 
     const shouldMarkError = (field: string) => {
       const hasError = errors[field as keyof ErrorType];
@@ -222,16 +226,18 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 className={shouldMarkError('userName') ? 'error' : 'form-user-input'}
                 id="name"
                 type="text"
+                maxLength={8}
                 placeholder="Name"
                 ref={refUserName}
                 onChange={this.handleUserNameChange}
               />
             </label>
-            <div
-              data-testid="name-error"
-              className={shouldMarkError('userName') ? 'error-text' : 'error-text-none'}
-            >
-              Name is required or starts with uppercased letter
+            <div data-testid="name-error">
+              {shouldMarkError('userName') ? (
+                <div className="error-text">Name is required or starts with uppercased letter</div>
+              ) : (
+                <div className="error-text-name">Name must be no more than 8 characters</div>
+              )}
             </div>
             <label htmlFor="surname" className="form-user-label">
               Surname
@@ -239,16 +245,18 @@ export default class Form extends React.Component<FormType, StateFormType> {
                 className={shouldMarkError('userSurname') ? 'error' : 'form-user-input'}
                 id="surname"
                 type="text"
+                maxLength={8}
                 placeholder="Surname"
                 ref={refUserSurname}
                 onChange={this.handleUserSurnameChange}
               />
             </label>
-            <div
-              data-testid="surname-error"
-              className={shouldMarkError('userSurname') ? 'error-text' : 'error-text-none'}
-            >
-              Surname is required or starts with uppercased letter
+            <div data-testid="surname-error">
+              {shouldMarkError('userName') ? (
+                <div className="error-text">Name is required or starts with uppercased letter</div>
+              ) : (
+                <div className="error-text-name">Surname must be no more than 8 characters</div>
+              )}
             </div>
             <label htmlFor="date" className="form-user-label">
               Date of birth
@@ -374,6 +382,7 @@ export default class Form extends React.Component<FormType, StateFormType> {
             Save
           </button>
         </form>
+        <div>{isSaved ? <h3 className="saved-info">Information have been saved</h3> : ''}</div>
       </div>
     );
   }

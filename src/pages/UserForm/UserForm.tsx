@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 /* eslint-disable import/no-named-as-default */
 import { StateForm, StateUserFormType, WithRouterProps } from 'entities/main.interface';
 import React, { ReactElement } from 'react';
@@ -40,7 +39,6 @@ export default class UserForm extends React.Component<WithRouterProps, StateForm
   handleSubmit(user: StateUserFormType): void {
     const { userCards } = this.state;
     this.setState({ userCards: [...userCards, user] });
-    alert(`${this.userName.current!.value} ${this.userSurname.current!.value}`);
   }
 
   render(): ReactElement {
