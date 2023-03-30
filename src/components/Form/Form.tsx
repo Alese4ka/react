@@ -57,33 +57,27 @@ export default class Form extends React.Component<FormType, StateFormType> {
   }
 
   handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSaved: false });
     this.setState({ userName: event.target.value });
   }
 
   handleUserSurnameChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSaved: false });
     this.setState({ userSurname: event.target.value });
   }
 
   handleUserDateChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSaved: false });
     this.setState({ userDate: event.target.value });
   }
 
   handleUserCountryChange(event: React.ChangeEvent<HTMLSelectElement>): void {
-    this.setState({ isSaved: false });
     this.setState({ userCountry: event.target.value });
   }
 
   handleUserSexChange(value: string): void {
-    this.setState({ isSaved: false });
     this.setState({ userSex: true });
     this.setState({ userSexValue: value });
   }
 
   handleUserConfirmChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ isSaved: false });
     this.setState({ userConfirm: event.target.checked });
   }
 
@@ -136,6 +130,9 @@ export default class Form extends React.Component<FormType, StateFormType> {
     submit!(user);
     this.setState({ isSaved: true });
     this.resetForm();
+    setTimeout(() => {
+      this.setState({ isSaved: false });
+    }, 1000);
     this.setState({ isSubmit: false });
   }
 
