@@ -19,7 +19,7 @@ export default defineConfig({
       reporter: ['text'],
       all: true,
       include: ['**/*.{jsx,tsx}'],
-      exclude: [...configDefaults.exclude, 'src/helpers/*'],
+      exclude: [...configDefaults.exclude, 'src/helpers/*', 'src/main.tsx'],
     },
   },
 });

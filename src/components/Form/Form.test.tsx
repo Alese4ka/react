@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Form from './Form';
 
 describe('FORM TEST', () => {
-  test('test inputs', () => {
-    render(<Form />);
+  it('renders card', () => {
+    const register = vi.fn();
+    render(<Form register={register} />);
 
     const nameInput = document.querySelector('#name') as HTMLInputElement | null;
     expect(nameInput).toBeTruthy();
