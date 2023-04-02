@@ -24,9 +24,13 @@ export interface StateUserFormType {
   userSurname: string;
   userDate: string;
   userCountry: string;
-  userSexValue: string;
-  userPhoto: string;
-  userConfirm: boolean;
+  userSexValue: string | undefined;
+  userSexF?: string;
+  userSex?: string;
+  userPhoto?: string;
+  userConfirm?: boolean;
+  userCurrentPhoto?: string;
+  userCurrentConfirm?: boolean;
 }
 
 export interface StateFormType {
@@ -55,8 +59,12 @@ export interface UserFormType {
   title: string;
 }
 
+export interface Submit {
+  (user?: StateUserFormType): void;
+}
+
 export interface FormType {
-  submit?: (user: StateUserFormType) => void;
+  submit?: Submit;
   refs?: RefsFormType;
 }
 
