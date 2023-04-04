@@ -7,7 +7,7 @@ import { configDefaults } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/react/',
+  base: '/react',
   plugins: [react()],
   test: {
     globals: true,
