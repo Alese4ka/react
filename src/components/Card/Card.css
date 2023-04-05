@@ -37,6 +37,10 @@
   margin-left: 1.3rem;
 }
 
+.click-img {
+  cursor: pointer;
+}
+
 .card-info-img {
   width: 12rem;
   height: 14rem;
