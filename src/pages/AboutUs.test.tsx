@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { HeaderRouter } from '../components/Header/Header';
+import Header from '../components/Header/Header';
 import AboutUs from './AboutUs';
 
 describe('About Us', () => {
@@ -11,7 +11,7 @@ describe('About Us', () => {
     render(
       <BrowserRouter>
         <AboutUs />
-        <HeaderRouter />
+        <Header />
       </BrowserRouter>
     );
 

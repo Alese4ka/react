@@ -1,7 +1,7 @@
 import { PropsSearchField } from 'entities/main.interface';
 import React from 'react';
 
-function SearchField({ placeholder, defaultValue, handleChange }: PropsSearchField) {
+const SearchField = ({ placeholder, defaultValue, handleChange }: PropsSearchField) => {
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input
@@ -15,6 +15,6 @@ function SearchField({ placeholder, defaultValue, handleChange }: PropsSearchFie
       />
     </form>
   );
-}
+};
 
 export default SearchField;

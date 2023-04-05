@@ -4,7 +4,7 @@ import React from 'react';
 import books from '../../entities/books';
 import './Card.css';
 
-function Card(props: PropsCard) {
+const Card = (props: PropsCard) => {
   const { userInfo } = props;
 
   return (
@@ -16,14 +16,14 @@ function Card(props: PropsCard) {
               <div>{element.userSurname}</div>
               <div>{element.userName}</div>
             </div>
-            <div className="card-author">Sex: {element.userSexValue}</div>
+            <div className="card-author">Sex: {element.userSex}</div>
             <div className="card-author">Date of birth: {element.userDate}</div>
             <div className="card-author">Country: {element.userCountry}</div>
             <div className="card-info">
               <div>
                 <img
                   className="card-info-img"
-                  src={element.userPhoto || element.userCurrentPhoto}
+                  src={element.userPhoto as string}
                   alt={element.userName}
                 />
               </div>

@@ -91,6 +91,10 @@
   overflow: hidden;
 }
 
+.switcher-box {
+  display: flex;
+}
+
 .form-user-label-sex {
   display: inline-block;
   width: 100px;
@@ -110,18 +114,10 @@
   cursor: pointer;
 }
 
-.form-user-form-sex .form-user-input-sex:checked + .form-user-label-sex {
+.checked {
   background-color: #d45869;
   color: #fff;
   box-shadow: none;
-}
-
-.form-user-form-sex .form-user-label-sex:first-of-type {
-  border-radius: 4px 0 0 4px;
-}
-
-.form-user-form-sex .form-user-label-sex:last-of-type {
-  border-radius: 0 4px 4px 0;
 }
 
 .form-user-file-input::-webkit-file-upload-button {
@@ -133,7 +129,6 @@
   display: inline-block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
-  border-radius: 3px;
   padding: 0.45rem 2.45rem;
   outline: none;
   white-space: nowrap;

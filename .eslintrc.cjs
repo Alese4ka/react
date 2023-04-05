@@ -47,6 +47,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/prefer-stateless-function': 'off',
     '@typescript-eslint/lines-between-class-members': 'off',
+    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
   },
   settings: {
     react: {

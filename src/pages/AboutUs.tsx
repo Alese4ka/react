@@ -1,9 +1,8 @@
-/* eslint-disable import/no-named-as-default */
 import { useLocation } from 'react-router-dom';
 import React from 'react';
 import HeaderRouter from '../components/Header/Header';
 
-export default function AboutUs() {
+const AboutUs = () => {
   const location = useLocation();
   if (location) {
     const nameUrl = location.pathname.slice(1);
@@ -20,4 +19,6 @@ export default function AboutUs() {
       <h1>Not Found</h1>
     </div>
   );
-}
+};
+
+export default AboutUs;

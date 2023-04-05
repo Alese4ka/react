@@ -8,8 +8,7 @@ import Form from './Form';
 
 describe('FORM TEST', () => {
   it('renders form', async () => {
-    const register = vi.fn();
-    render(<Form register={register} />);
+    render(<Form />);
 
     window.URL.createObjectURL = vi.fn();
 
@@ -26,7 +25,7 @@ describe('FORM TEST', () => {
       nameInput.textContent = 'try to search';
       expect(nameInput.textContent).toBe('try to search');
       expect(nameInput.type).toBe('text');
-      expect(nameInput.name).toBe('');
+      expect(nameInput.name).toBe('userName');
 
       fireEvent.change(nameInput, {
         target: {
@@ -45,7 +44,7 @@ describe('FORM TEST', () => {
       surnameInput.textContent = 'try to search';
       expect(surnameInput.textContent).toBe('try to search');
       expect(surnameInput.type).toBe('text');
-      expect(surnameInput.name).toBe('');
+      expect(surnameInput.name).toBe('userSurname');
 
       fireEvent.change(surnameInput, {
         target: {
@@ -63,13 +62,13 @@ describe('FORM TEST', () => {
     const select = document.querySelector('#country') as HTMLInputElement | null;
     expect(select).toBeTruthy();
     expect(select).toBeInTheDocument();
-    expect(select?.value).toBe('defaultValue');
+    expect(select?.value).toBe('');
 
     if (select) {
       select.textContent = 'India';
       expect(select.textContent).toBe('India');
       expect(select.type).toBe('select-one');
-      expect(select.name).toBe('');
+      expect(select.name).toBe('userCountry');
 
       fireEvent.change(select, {
         target: {
@@ -79,7 +78,7 @@ describe('FORM TEST', () => {
       expect(select.value).toBe('');
     }
 
-    const sexRadio = document.querySelector('#switch_left') as HTMLInputElement | null;
+    const sexRadio = document.querySelector('#userSexF') as HTMLInputElement | null;
     expect(sexRadio).toBeTruthy();
     expect(sexRadio).toBeInTheDocument();
     expect(sexRadio?.value).toBe('Female');
@@ -90,7 +89,7 @@ describe('FORM TEST', () => {
       expect(sexRadio).toBeChecked();
     }
 
-    const sexRadioM = document.querySelector('#switch_right') as HTMLInputElement | null;
+    const sexRadioM = document.querySelector('#userSex') as HTMLInputElement | null;
     expect(sexRadioM).toBeTruthy();
     expect(sexRadioM).toBeInTheDocument();
     expect(sexRadioM?.value).toBe('Male');
@@ -113,9 +112,6 @@ describe('FORM TEST', () => {
     expect(checkboxInput).not.toBeChecked();
     fireEvent.click(checkboxInput);
     expect(checkboxInput).toBeChecked();
-    // expect(checkboxInput).toEqual(true);
-    // fireEvent.click(checkboxInput);
-    // expect(checkboxInput.target!.checked).toEqual(false);
 
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();

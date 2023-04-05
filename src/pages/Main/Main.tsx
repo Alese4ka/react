@@ -1,19 +1,16 @@
-/* eslint-disable import/no-named-as-default */
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
 import './Main.css';
 import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';
 
-function MainPage() {
+const MainPage = () => {
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    return () => {
-      if (searchValue) {
-        localStorage.setItem('search', JSON.stringify(searchValue));
-      }
-    };
+    if (searchValue) {
+      localStorage.setItem('search', JSON.stringify(searchValue));
+    }
   }, [searchValue]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -41,6 +38,6 @@ function MainPage() {
       <Card />
     </div>
   );
-}
+};
 
 export default MainPage;
