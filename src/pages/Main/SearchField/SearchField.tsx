@@ -1,7 +1,12 @@
 import { PropsSearchField } from 'entities/main.interface';
 import React from 'react';
 
-const SearchField = ({ placeholder, defaultValue, handleChange }: PropsSearchField) => {
+const SearchField: React.FC<PropsSearchField> = ({
+  placeholder,
+  defaultValue,
+  handleChange,
+  handleKeyDown,
+}: PropsSearchField) => {
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input
@@ -12,6 +17,7 @@ const SearchField = ({ placeholder, defaultValue, handleChange }: PropsSearchFie
         placeholder={placeholder}
         defaultValue={defaultValue}
         onInput={handleChange}
+        onKeyDown={handleKeyDown}
       />
     </form>
   );
