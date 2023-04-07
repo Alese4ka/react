@@ -43,4 +43,5 @@ export interface PropsSearchField {
 export interface PropsCard {
   userInfo?: StateUserFormType[];
   characterInfo?: RickMortyType[];
+  isLoading: boolean;
 }

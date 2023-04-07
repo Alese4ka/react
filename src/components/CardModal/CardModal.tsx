@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
@@ -37,8 +38,12 @@ const CardModal = (props: CardModalProps) => {
             <div>
               Episode: <p className="modal-box-info-span">{character.episode}</p>
             </div>
-            {/* {/* <div>{character.location}</div> */}
-            {/* <div>{character.origin as unknown as LocationType}</div> */}
+            <div>
+              Location: <p className="modal-box-info-span">{character.location.name}</p>
+            </div>
+            <div>
+              Origin: <p className="modal-box-info-span">{character.origin.name}</p>
+            </div>
           </div>
         </div>
       </div>

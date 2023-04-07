@@ -5,14 +5,11 @@ import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';
 
 const MainPage = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    if (searchValue) {
-      localStorage.setItem('search', JSON.stringify(searchValue));
-    }
-  }, [searchValue]);
+  const searchValueLC = JSON.parse(localStorage.getItem('search') as string) || '';
+  const [searchValue, setSearchValue] = useState(searchValueLC);
+  const [isLoading, setIsLoading] = useState(true);
+  const [characters, setCharacters] = useState([]);
+  const [isError, setIsError] = useState('');
 
   const loadCharacters = (value?: string) => {
     fetch(
@@ -23,19 +20,30 @@ const MainPage = () => {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result.results);
-          // setIsLoaded(true);
-          setBooks(result.results);
+          setTimeout(() => {
+            setCharacters(result.results);
+            setIsLoading(false);
+          }, 5000);
         },
         (error) => {
-          // setIsLoaded(true);
-          // setError(error);
+          setIsLoading(false);
+          setIsError(error);
         }
       );
   };
 
   useEffect(() => {
-    loadCharacters();
+    if (searchValue) {
+      localStorage.setItem('search', JSON.stringify(searchValue));
+    }
+  }, [searchValue]);
+
+  useEffect(() => {
+    if (searchValueLC) {
+      loadCharacters(searchValueLC);
+    } else {
+      loadCharacters();
+    }
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -43,42 +51,31 @@ const MainPage = () => {
     if (event) {
       const value = event?.target.value;
       setSearchValue(value);
-      loadCharacters();
+      if (!value) {
+        setIsLoading(true);
+        loadCharacters();
+      }
     }
   };
 
   const handleKeyDown = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if ((event as unknown as KeyboardEvent).key === 'Enter') {
+    if ((event as unknown as KeyboardEvent).key === 'Enter' && event.target.value) {
       const value = event?.target.value;
+      setIsLoading(true);
       loadCharacters(value);
     }
   };
 
-  const searchValueLC = localStorage.getItem('search');
-  if (searchValueLC !== null && searchValueLC !== undefined) {
-    const searchValueCurrent = JSON.parse(searchValueLC);
-    return (
-      <div data-testid="main-page">
-        <HeaderRouter title="main" />
-        <SearchField
-          defaultValue={searchValueCurrent || ''}
-          handleChange={handleChange}
-          handleKeyDown={handleKeyDown as unknown as KeyboardEventHandler<HTMLInputElement>}
-        />
-        <Card characterInfo={books} />
-      </div>
-    );
-  }
   return (
     <div data-testid="main-page">
       <HeaderRouter title="main" />
       <SearchField
         placeholder="Type here..."
-        defaultValue=""
+        defaultValue={searchValue}
         handleChange={handleChange}
         handleKeyDown={handleKeyDown as unknown as KeyboardEventHandler<HTMLInputElement>}
       />
-      <Card characterInfo={books} />
+      <Card characterInfo={characters} isLoading={isLoading} />
     </div>
   );
 };
