@@ -1,6 +1,6 @@
 import React, { KeyboardEventHandler, useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
-import './Main.css';
+import './MainPage.css';
 import SearchField from './SearchField/SearchField';
 import HeaderRouter from '../../components/Header/Header';
 
@@ -9,7 +9,7 @@ const MainPage = () => {
   const [searchValue, setSearchValue] = useState(searchValueLC);
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
-  const [isError, setIsError] = useState('');
+  const [, setIsError] = useState('');
 
   const loadCharacters = (value?: string) => {
     fetch(
@@ -20,10 +20,8 @@ const MainPage = () => {
       .then((res) => res.json())
       .then(
         (result) => {
-          setTimeout(() => {
-            setCharacters(result.results);
-            setIsLoading(false);
-          }, 5000);
+          setCharacters(result.results);
+          setIsLoading(false);
         },
         (error) => {
           setIsLoading(false);
@@ -44,7 +42,7 @@ const MainPage = () => {
     } else {
       loadCharacters();
     }
-  }, []);
+  }, [searchValueLC]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     localStorage.removeItem('search');

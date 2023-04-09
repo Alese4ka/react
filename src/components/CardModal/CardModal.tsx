@@ -15,7 +15,11 @@ const CardModal = (props: CardModalProps) => {
   const { active, setActive, character } = props;
 
   return (
-    <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
+    <div
+      data-testid="card-modal"
+      className={active ? 'modal active' : 'modal'}
+      onClick={() => setActive(false)}
+    >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-box">
           <div className="modal-box-name">

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import React, { ReactElement } from 'react';
 import AboutUs from '../pages/AboutUs';
-import MainPage from '../pages/Main/Main';
+import MainPage from '../pages/MainPage/MainPage';
 import NotFound from '../pages/NotFound';
 import UserForm from '../pages/UserForm/UserForm';
 

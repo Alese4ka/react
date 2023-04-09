@@ -10,6 +10,7 @@ const SearchField: React.FC<PropsSearchField> = ({
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input
+        data-testid="search"
         className="form-input"
         id="search"
         type="search"

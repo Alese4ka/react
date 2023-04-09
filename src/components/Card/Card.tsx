@@ -4,7 +4,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable prettier/prettier */
 import { PropsCard, RickMortyType } from 'entities/main.interface';
-import 'react-loading-skeleton/dist/skeleton.css';
 import React, { useState } from 'react';
 import MyLoader from "../Loader/Loader";
 import './Card.css';
@@ -14,7 +13,7 @@ const Card = (props: PropsCard) => {
   const { userInfo } = props;
   const { characterInfo, isLoading } = props;
   const [modalActive, setModalActive] = useState(false);
-  const [isError, setIsError] = useState('');
+  const [, setIsError] = useState('');
   const [character, setCharacter] = useState<RickMortyType>({
     id: 0,
     name: '',
