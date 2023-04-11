@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { KeyboardEventHandler, useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
 import './MainPage.css';
@@ -42,25 +43,26 @@ const MainPage = () => {
     } else {
       loadCharacters();
     }
-  }, [searchValueLC]);
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     localStorage.removeItem('search');
     if (event) {
       const value = event?.target.value;
       setSearchValue(value);
-      if (!value) {
-        setIsLoading(true);
-        loadCharacters();
-      }
     }
   };
 
   const handleKeyDown = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if ((event as unknown as KeyboardEvent).key === 'Enter' && event.target.value) {
-      const value = event?.target.value;
-      setIsLoading(true);
-      loadCharacters(value);
+    if ((event as unknown as KeyboardEvent).key === 'Enter') {
+      if (event.target.value) {
+        const value = event?.target.value;
+        setIsLoading(true);
+        loadCharacters(value);
+      } else {
+        setIsLoading(true);
+        loadCharacters();
+      }
     }
   };
 
