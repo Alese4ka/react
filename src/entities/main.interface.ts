@@ -1,5 +1,3 @@
-import { FormEventHandler, KeyboardEventHandler } from 'react';
-
 export interface StateUserFormType {
   id: string;
   userName: string;
@@ -36,8 +34,6 @@ export interface HeaderType {
 export interface PropsSearchField {
   placeholder?: string;
   defaultValue?: string;
-  handleChange?: FormEventHandler<HTMLInputElement>;
-  handleKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 }
 
 export interface PropsCard {
