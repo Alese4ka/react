@@ -2,13 +2,21 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
+import { Provider } from 'react-redux';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Card from '../Card/Card';
 import Form from './Form';
+import { setupStore } from '../../store/store';
+
+const store = setupStore();
 
 describe('FORM TEST', () => {
   it('renders form', async () => {
-    render(<Form />);
+    render(
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
 
     window.URL.createObjectURL = vi.fn();
 
@@ -127,6 +135,10 @@ describe('FORM TEST', () => {
   });
 
   it('renders card', () => {
-    render(<Card userInfo={[]} />);
+    render(
+      <Provider store={store}>
+        <Card users={[]} />
+      </Provider>
+    );
   });
 });

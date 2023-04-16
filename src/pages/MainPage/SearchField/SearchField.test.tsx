@@ -2,11 +2,19 @@ import { describe } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 
 import React from 'react';
+import { Provider } from 'react-redux';
+import { setupStore } from '../../../store/store';
 import SearchField from './SearchField';
+
+const store = setupStore();
 
 describe('Main', () => {
   test('The input field and its props', () => {
-    render(<SearchField />);
+    render(
+      <Provider store={store}>
+        <SearchField />
+      </Provider>
+    );
     const form = document.querySelector('form') as HTMLFormElement | null;
     const input = document.querySelector('input') as HTMLInputElement | null;
 
