@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import { StateUserFormType } from 'entities/main.interface';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import countries from '../../entities/countries';
+import { userSlice } from '../../store/reducers/UserSlice';
+import { useAppDispatch } from '../../hooks/redux';
 
-export type NewFormProps = {
-  onSubmit: SubmitHandler<StateUserFormType>;
-};
+const Form = () => {
+  const dispatch = useAppDispatch();
+  const { setNewUser } = userSlice.actions;
 
-const Form: React.FC<NewFormProps> = (props) => {
-  const { onSubmit } = props;
   const {
     handleSubmit,
     register,
@@ -47,7 +47,7 @@ const Form: React.FC<NewFormProps> = (props) => {
       userPhoto: uploadFile(userPhoto as FileList),
       userConfirm,
     };
-    onSubmit(user);
+    dispatch(setNewUser(user));
     setIsSaved(true);
     reset();
     setToggleLeft(false);
