@@ -1,43 +1,45 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable no-nested-ternary */
-import { AppDispatch } from 'store/store';
-import { userSlice } from './UserSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchCharacters = (name?: string) => async (dispatch: AppDispatch) => {
-  dispatch(userSlice.actions.charactersFetching());
-  await fetch(
-    name
-      ? `https://rickandmortyapi.com/api/character?name=${name}`
-      : 'https://rickandmortyapi.com/api/character'
-  )
-    .then((res) => res.json())
-    .then(
-      (result) => {
-        dispatch(userSlice.actions.charactersFetchingSuccess(result.results));
-      },
-      (error) => {
-        dispatch(userSlice.actions.charactersFetchingError(error.message));
-      }
-    );
-};
-
-export const fetchCharacterModal =
-  (name?: string, id?: number) => async (dispatch: AppDispatch) => {
-    dispatch(userSlice.actions.characterModalFetching());
-    fetch(
+export const fetchCharacters = createAsyncThunk(
+  'character/fetchCharacters',
+  async (name?: string) => {
+    const response = await fetch(
       name
-        ? id
-          ? `https://rickandmortyapi.com/api/character/${id}`
-          : `https://rickandmortyapi.com/api/character?name=${name}`
+        ? `https://rickandmortyapi.com/api/character?name=${name}`
         : 'https://rickandmortyapi.com/api/character'
     )
       .then((res) => res.json())
       .then(
         (result) => {
-          dispatch(userSlice.actions.characterModalFetchingSuccess(result));
+          return result.results;
         },
         (error) => {
-          dispatch(userSlice.actions.characterModalFetchingError(error.message));
+          return error.message;
         }
       );
-  };
+
+    return response;
+  }
+);
+
+export const fetchCharacterModal = createAsyncThunk(
+  'character/fetchCharacterModal',
+  async (id?: number) => {
+    const response = await fetch(
+      id
+        ? `https://rickandmortyapi.com/api/character/${id}`
+        : 'https://rickandmortyapi.com/api/character'
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          return result;
+        },
+        (error) => {
+          return error.message;
+        }
+      );
+
+    return response;
+  }
+);

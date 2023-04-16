@@ -1,29 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import React from 'react';
 import Card from '../../components/Card/Card';
-import { fetchCharacters } from '../../store/reducers/ActionCreators';
 import './MainPage.css';
 import SearchField from './SearchField/SearchField';
+import characterAPI from '../../services/CharacterService';
 import HeaderRouter from '../../components/Header/Header';
+import { useAppSelector } from '../../hooks/redux';
 
 const MainPage = () => {
-  const dispatch = useAppDispatch();
-  const { characters, isLoading, searchValue } = useAppSelector((state) => state.characterReducer);
-
-  useEffect(() => {
-    if (searchValue) {
-      dispatch(fetchCharacters(searchValue));
-    } else {
-      dispatch(fetchCharacters());
-    }
-  }, []);
+  const { searchValue } = useAppSelector((state) => state.characterReducer);
+  const { data, isLoading } = characterAPI.useFetchAllCharactersQuery(searchValue);
 
   return (
     <div data-testid="main-page">
       <HeaderRouter title="main" />
       <SearchField placeholder="Type here..." defaultValue={searchValue} />
-      <Card characterInfo={characters} isLoading={isLoading} />
+      <Card characterInfo={data?.results} isLoading={isLoading} />
     </div>
   );
 };

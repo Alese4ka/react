@@ -9,6 +9,17 @@ export interface StateUserFormType {
   userConfirm: boolean;
 }
 
+export interface InfoType {
+  count: number;
+  next: string;
+  pages: number;
+  prev: null;
+}
+export interface DataFromApi {
+  info: InfoType;
+  results: RickMortyType[];
+}
+
 export interface RickMortyType {
   id: number;
   name: string;
@@ -37,7 +48,7 @@ export interface PropsSearchField {
 }
 
 export interface PropsCard {
-  userInfo?: StateUserFormType[];
+  users?: StateUserFormType[];
   characterInfo?: RickMortyType[];
-  isLoading: boolean;
+  isLoading?: boolean;
 }

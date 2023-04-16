@@ -1,17 +1,21 @@
 import { useLocation } from 'react-router-dom';
 import { StateUserFormType } from 'entities/main.interface';
-import React, { useState } from 'react';
+import React from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import HeaderRouter from '../../components/Header/Header';
 import Card from '../../components/Card/Card';
 import Form from '../../components/Form/Form';
 import './UserForm.css';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { userSlice } from '../../store/reducers/UserSlice';
 
 const UserForm = () => {
-  const [userCards, setUserCards] = useState<StateUserFormType[]>([]);
+  const dispatch = useAppDispatch();
+  const { setNewUser } = userSlice.actions;
+  const { users } = useAppSelector((state) => state.characterReducer);
 
   const onSubmit: SubmitHandler<StateUserFormType> = (user: StateUserFormType): void => {
-    setUserCards([...userCards, user]);
+    dispatch(setNewUser(user));
   };
 
   const location = useLocation();
@@ -26,7 +30,7 @@ const UserForm = () => {
           </div>
         </div>
         <div className="user-info-cards">
-          <Card userInfo={userCards} />
+          <Card users={users} />
         </div>
       </div>
     );

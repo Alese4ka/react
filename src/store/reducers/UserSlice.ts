@@ -1,17 +1,19 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RickMortyType } from 'entities/main.interface';
+import { Action, AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { RickMortyType, StateUserFormType } from 'entities/main.interface';
+import { fetchCharacterModal, fetchCharacters } from './ActionCreators';
 
-interface CharactersState {
+interface AppState {
   searchValue: string;
   characters: RickMortyType[];
   character: RickMortyType;
   isLoading: boolean;
   error: string;
-  count: number;
+  users: StateUserFormType[];
 }
 
-const initialState: CharactersState = {
+const initialState: AppState = {
   searchValue: '',
   characters: [],
   character: {
@@ -34,8 +36,16 @@ const initialState: CharactersState = {
   },
   isLoading: false,
   error: '',
-  count: 0,
+  users: [],
 };
+
+interface RejectedAction extends Action {
+  error: Error;
+}
+
+function isRejectedAction(action: AnyAction): action is RejectedAction {
+  return action.type.endsWith('rejected');
+}
 
 export const userSlice = createSlice({
   name: 'character',
@@ -44,30 +54,34 @@ export const userSlice = createSlice({
     getSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
-    charactersFetching(state) {
-      state.isLoading = true;
+    setNewUser(state, action: PayloadAction<StateUserFormType>) {
+      state.users.push(action.payload);
     },
-    charactersFetchingSuccess(state, action: PayloadAction<RickMortyType[]>) {
-      state.isLoading = false;
-      state.error = '';
-      state.characters = action.payload;
-    },
-    charactersFetchingError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    characterModalFetching(state) {
-      state.isLoading = true;
-    },
-    characterModalFetchingSuccess(state, action: PayloadAction<RickMortyType>) {
-      state.isLoading = false;
-      state.error = '';
-      state.character = action.payload;
-    },
-    characterModalFetchingError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCharacters.fulfilled, (state, action: PayloadAction<RickMortyType[]>) => {
+        state.isLoading = false;
+        state.error = '';
+        state.characters = action.payload;
+      })
+      .addCase(fetchCharacters.pending, (state) => {
+        state.isLoading = true;
+      });
+
+    builder
+      .addCase(fetchCharacterModal.fulfilled, (state, action: PayloadAction<RickMortyType>) => {
+        state.isLoading = false;
+        state.error = '';
+        state.character = action.payload;
+      })
+      .addCase(fetchCharacterModal.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addMatcher(isRejectedAction, (state) => {
+        state.isLoading = false;
+      })
+      .addDefaultCase(() => {});
   },
 });
 
