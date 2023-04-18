@@ -1,0 +1,208 @@
+.wrapper {
+  background-color: #d45869;
+}
+
+.wrapper-form {
+  height: 55vh;
+  padding-top: 2rem;
+}
+
+.form-user {
+  background-color: #ffffff;
+  width: 60rem;
+  height: 22rem;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.form-user-box {
+  background-color: #d45869;
+  position: absolute;
+  margin: 0 auto;
+  width: 3rem;
+  height: 3rem;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.form-user-main-info {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 4rem;
+  flex: 50%;
+}
+
+.form-user-main-info,
+.form-user-add-info {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 4rem;
+  flex: 50%;
+}
+
+.form-user-label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75rem;
+}
+
+.form-user-label:first-child {
+  margin-top: 0;
+}
+
+.form-user-input,
+.form-user-select {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+}
+
+.error {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border-color: #d45869;
+}
+
+.error-text-name {
+  font-size: 0.75rem;
+  color: black;
+}
+
+.error-text-none {
+ display: none;
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: #d45869;
+}
+
+.form-user-form-sex {
+  margin: 1rem 2rem 0rem 0;
+}
+
+.form-user-input-sex {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switcher-box {
+  display: flex;
+}
+
+.form-user-label-sex {
+  display: inline-block;
+  width: 100px;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.1s ease-in-out;
+}
+
+.form-user-label-sex:hover {
+  cursor: pointer;
+}
+
+.checked {
+  background-color: #d45869;
+  color: #fff;
+  box-shadow: none;
+}
+
+.form-user-file-input::-webkit-file-upload-button {
+  display: none;
+}
+
+.form-user-file-input::before {
+  content: 'Select file';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  padding: 0.45rem 2.45rem;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.form-user-label-personal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.form-user-checkbox-personal {
+  margin-right: 1rem;
+}
+
+.form-user-submit-border,
+.form-user-submit-border-error {
+  border: 1.5px solid #000000;
+  border-radius: 50px;
+  position: absolute;
+  margin: 1rem auto;
+  width: 11rem;
+  height: 3rem;
+  bottom: -25%;
+  right: 0;
+  left: -5%;
+}
+
+.form-user-submit-border:active {
+  border: none;
+}
+
+.form-user-submit,
+.form-user-error {
+  font-size: 1rem;
+  position: absolute;
+  margin: 1rem auto;
+  width: 11rem;
+  height: 3rem;
+  bottom: -8%;
+  right: 0;
+  left: 0;
+  border: none;
+  background: #b2d358;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.form-user-error {
+  color: grey;
+}
+
+.form-user-submit:active {
+  background: #719218;
+}
+
+.user-info-cards {
+  padding-top: 0.5rem;
+  background-color: #ffffff;
+}
+
+.saved-info {
+  text-align: center;
+    margin-top: 3.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: white;
+}
