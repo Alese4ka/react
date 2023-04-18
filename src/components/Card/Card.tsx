@@ -10,7 +10,7 @@ const Card = (props: PropsCard) => {
   const { users } = props;
   const { characterInfo, isLoading } = props;
   const [modalActive, setModalActive] = useState(false);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(1);
 
   const openModal = (currentId: number): void => {
     setId(currentId);

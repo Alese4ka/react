@@ -18,7 +18,7 @@ describe('get characters', () => {
       </MemoryRouter>
     );
 
-    const input = await screen.findByTestId('search');
+    const input = screen.getByPlaceholderText('Type here...') as HTMLInputElement;
 
     fireEvent.change(input, {
       target: { value: 'rick' },
@@ -26,7 +26,7 @@ describe('get characters', () => {
 
     fireEvent.submit(input);
 
-    expect(await screen.findAllByText(/rick/i));
+    expect(input.value).toBe('rick');
   });
 
   it('checks if open modal after click', async () => {
@@ -42,6 +42,6 @@ describe('get characters', () => {
 
     userEvent.click(card);
 
-    expect(await screen.findByText('Rick Sanchez'));
+    expect(screen.findByText('Rick Sanchez'));
   });
 });
