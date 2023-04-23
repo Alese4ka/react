@@ -8,7 +8,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   base: '/react',
-  plugins: [react()],
+  plugins: [react({ fastRefresh: false })],
+  server: {
+    host: 'localhost',
+  },
   test: {
     globals: true,
     environment: 'jsdom',
