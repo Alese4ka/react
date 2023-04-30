@@ -25,7 +25,7 @@ const Card = (props: PropsCard) => {
         <div data-testid="cards" className="cards">
           {users ? (
             users!.map((element) => (
-              <div className="card" key={element.id}>
+              <div data-testid="card" className="card" key={element.id}>
                 <div className="card-title">
                   <div>{element.userSurname}</div>
                   <div>{element.userName}</div>
