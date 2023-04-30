@@ -11,8 +11,6 @@
     "preview": "vite preview",
     "lint": "eslint --fix ./src",
     "test": "npx vitest run --coverage.enabled --coverage.provider=c8 --coverage ./src",
-    "test:cypress": "start-server-and-test dev http://localhost:3333",
-    "start": "PORT=3333 react-scripts -r @cypress/instrument-cra start",
     "cypress:run": "cypress run --e2e",
     "cypress:coverage": "start-server-and-test dev http://localhost:3333 cypress:run && npx nyc report --reporter=text-summary" 
   },

@@ -1,5 +1,9 @@
+import { Provider } from 'react-redux';
 import React from 'react';
 import AppRouter from './router/AppRouter';
+import { setupStore } from './store/store';
+
+const store = setupStore();
 
 const App = () => {
   return (
@@ -19,7 +23,9 @@ const App = () => {
 
       <body>
         <div>
-          <AppRouter />
+          <Provider store={store}>
+            <AppRouter />
+          </Provider>
         </div>
       </body>
     </html>
