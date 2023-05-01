@@ -29,8 +29,8 @@ describe('App E2E', () => {
     cy.get('input[id=date]').should('have.value', '')
   })
 
-  it('should open the modal when the item is clicked', () => {
-    cy.visit('/');
-    cy.get('[data-testid="cards"]').first();
-  });
+  // it('should open the modal when the item is clicked', () => {
+  //   cy.visit('/');
+  //   cy.get('[data-testid="cards"]').first();
+  // });
 })

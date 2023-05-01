@@ -12,7 +12,7 @@
     "lint": "eslint --fix ./src",
     "test": "npx vitest run --coverage.enabled --coverage.provider=c8 --coverage ./src",
     "cypress:run": "cypress run --e2e",
-    "cypress:coverage": "start-server-and-test dev http://localhost:3333 cypress:run && npx nyc report --reporter=text-summary" 
+    "cypress:coverage": "start-server-and-test dev http://localhost:3333 cypress:run && npx nyc report --reporter=text-summary"
   },
   "husky": {
     "hooks": {
@@ -36,7 +36,8 @@
     "react-hook-form": "^7.43.8",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
-    "sirv": "^2.0.2"
+    "sirv": "^2.0.2",
+    "vite-plugin-istanbul": "^4.0.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.4",
