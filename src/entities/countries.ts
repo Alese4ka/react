@@ -1,0 +1,27 @@
+const countries = [
+  'Canada',
+  'Ukraine',
+  'Belarus',
+  'Hungary',
+  'Iceland',
+  'India',
+  'Ireland',
+  'Israel',
+  'Italy',
+  'Japan',
+  'Kuwait',
+  'Lebanon',
+  'Luxembourg',
+  'Netherlands',
+  'Norway',
+  'Poland',
+  'Portugal',
+  'Romania',
+  'Serbia',
+  'Slovakia',
+  'Slovenia',
+  'South Africa',
+  'Spain',
+];
+
+export default countries;
