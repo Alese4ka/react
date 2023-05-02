@@ -9,17 +9,17 @@ const Header = (props: HeaderType) => {
     <div className="wrapper">
       <h2>{title}</h2>
       <div className="wrapper-menu">
-        <Link to="/" data-testid="main-link">
+        <Link to="/" data-testid="main-link" className="main">
           <p data-testid="main" className="menu">
             Main Page
           </p>
         </Link>
-        <Link to="/about" data-testid="about-link">
+        <Link to="/about" data-testid="about-link" className="about">
           <p data-testid="about-page" className="menu">
             About Us
           </p>
         </Link>
-        <Link to="/form" data-testid="form-link">
+        <Link to="/form" data-testid="form-link" className="form">
           <p data-testid="form-page" className="menu">
             Form
           </p>

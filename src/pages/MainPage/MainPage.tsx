@@ -11,7 +11,7 @@ const MainPage = () => {
   const { data, isLoading } = characterAPI.useFetchAllCharactersQuery(searchValue);
 
   return (
-    <div data-testid="main-page">
+    <div data-testid="main-page" className="main-page">
       <HeaderRouter title="main" />
       <SearchField placeholder="Type here..." defaultValue={searchValue} />
       <Card characterInfo={data?.results} isLoading={isLoading} />
